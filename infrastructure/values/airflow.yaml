@@ -7,10 +7,18 @@ dags:
     size: 5Gi
   gitSync:
     enabled: false
-  # Mount external DAGs
-  hostPath:
-    enabled: true
-    path: /home/raghu/data-platform/applications/airflow-dags
+
+# Remove the invalid hostPath config and update to use proper volumes config
+extraVolumes:
+  - name: airflow-dags
+    hostPath:
+      path: /home/raghu/data-platform/applications/airflow-dags
+      type: Directory
+
+extraVolumeMounts:
+  - name: airflow-dags
+    mountPath: /opt/airflow/dags
+    readOnly: true
 
 logs:
   persistence:
