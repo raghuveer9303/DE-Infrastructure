@@ -1,11 +1,50 @@
 configOverrides:
   SUPERSET_WEBSERVER_PORT: "8088"
+  SECRET_KEY: "your-secret-key"
+  SQLALCHEMY_DATABASE_URI: "postgresql+psycopg2://db_user:db_pass@postgres-postgresql.data.svc.cluster.local:5432/analytics"
+
+persistence:
+  enabled: true
+  storageClass: microk8s-hostpath
+  size: 10Gi
+
+webserver:
+  resources:
+    requests:
+      memory: "1Gi"
+      cpu: "500m"
+    limits:
+      memory: "2Gi"
+      cpu: "1000m"
+
+worker:
+  replicas: 2
+  resources:
+    requests:
+      memory: "1Gi"
+      cpu: "500m"
+    limits:
+      memory: "2Gi"
+      cpu: "1000m"
+
+# Default admin credentials
+init:
+  resources:
+    requests:
+      memory: "256Mi"
+      cpu: "100m"
+    limits:
+      memory: "512Mi"
+      cpu: "200m"
+  adminUser:
+    username: admin
+    firstname: Superset
+    lastname: Admin
+    email: admin@superset.com
+    password: admin
 
 ingress:
   enabled: true
   hosts:
     - host: superset.brahma
       paths: ["/"]
-  tls:
-    - secretName: superset-tls
-      hosts: [superset.brahma]

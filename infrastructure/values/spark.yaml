@@ -1,16 +1,20 @@
 master:
   webPort: 8080
+  persistence:
+    enabled: true
+    storageClass: microk8s-hostpath
+    size: 10Gi
+
 worker:
   webPort: 8081
-
-persistence:
-  storageClass: microk8s-hostpath
+  replicas: 2
+  persistence:
+    enabled: true
+    storageClass: microk8s-hostpath
+    size: 20Gi
 
 ingress:
   enabled: true
   hosts:
     - host: spark.brahma
       paths: ["/"]
-  tls:
-    - secretName: spark-tls
-      hosts: [spark.brahma]

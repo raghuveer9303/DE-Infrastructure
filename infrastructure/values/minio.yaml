@@ -3,9 +3,24 @@ secretKey: minioadmin
 mode: standalone
 persistence:
   storageClass: microk8s-hostpath
+  size: 10Gi
+
+service:
+  type: ClusterIP
+
+resources:
+  requests:
+    memory: "256Mi"
+    cpu: "100m"
+  limits:
+    memory: "1Gi"
+    cpu: "500m"
 
 ingress:
   enabled: true
+  annotations:
+    kubernetes.io/ingress.class: nginx
+    cert-manager.io/cluster-issuer: letsencrypt-prod
   hosts:
     - host: minio.brahma
       paths:

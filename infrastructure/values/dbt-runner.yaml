@@ -1,12 +1,19 @@
-image:
-  repository: ghcr.io/yourorg/project-a-dbt
-  tag: latest
-
-command:
-  - tail
-args:
-  - -f
-  - /dev/null  # keep pod alive for K8sPodOperator
-
-serviceAccount:
-  create: true
+image: ghcr.io/dbt-labs/dbt-postgres:1.7.1
+command: ["sleep", "infinity"]
+env:
+  - name: DBT_PROFILES_DIR
+    value: /root/.dbt
+  - name: DBT_PROJECT_DIR
+    value: /dbt
+volumeMounts:
+  - name: dbt-profiles
+    mountPath: /root/.dbt
+  - name: dbt-project
+    mountPath: /dbt
+volumes:
+  - name: dbt-profiles
+    hostPath:
+      path: /path/to/applications/dbt/profiles
+  - name: dbt-project
+    hostPath:
+      path: /path/to/applications/dbt/project

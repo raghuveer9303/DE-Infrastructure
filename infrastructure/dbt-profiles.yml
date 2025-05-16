@@ -1,0 +1,12 @@
+brahma:
+  target: dev
+  outputs:
+    dev:
+      type: postgres
+      host: postgres-postgresql.data.svc.cluster.local
+      user: db_user
+      pass: db_pass
+      port: 5432
+      dbname: analytics
+      schema: dbt_dev
+      threads: 4 

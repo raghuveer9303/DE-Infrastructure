@@ -1,22 +1,41 @@
 executor: CeleryExecutor
+
 dags:
   persistence:
     enabled: true
     storageClassName: microk8s-hostpath
+    size: 5Gi
+  gitSync:
+    enabled: false
+  # Mount external DAGs
+  hostPath:
+    enabled: true
+    path: /path/to/applications/airflow-dags
+
 logs:
   persistence:
     enabled: true
     storageClassName: microk8s-hostpath
+    size: 10Gi
 
 webserver:
   service:
     type: ClusterIP
+
+workers:
+  replicas: 2
+
+# Connection to PostgreSQL
+data:
+  metadataConnection:
+    user: db_user
+    pass: db_pass
+    host: postgres-postgresql.data.svc.cluster.local
+    port: 5432
+    db: analytics
 
 ingress:
   enabled: true
   hosts:
     - host: airflow.brahma
       paths: ["/"]
-  tls:
-    - secretName: airflow-tls
-      hosts: [airflow.brahma]

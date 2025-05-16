@@ -2,13 +2,30 @@ auth:
   username: db_user
   password: db_pass
   database: analytics
+  postgresPassword: admin_pass
 
 primary:
   persistence:
+    enabled: true
     storageClass: microk8s-hostpath
+    size: 20Gi
+  service:
+    type: ClusterIP
+    port: 5432
+
+backup:
+  enabled: true
+  schedule: "0 0 * * *"
+  retention: 7
+  storage:
+    storageClass: ${STORAGE_CLASS:-microk8s-hostpath}
+    size: 10Gi
 
 ingress:
   enabled: true
+  annotations:
+    kubernetes.io/ingress.class: nginx
+    cert-manager.io/cluster-issuer: letsencrypt-prod
   hosts:
     - host: postgres.brahma
       paths: ["/"]

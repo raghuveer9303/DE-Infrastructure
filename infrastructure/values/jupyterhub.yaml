@@ -1,5 +1,6 @@
 proxy:
-  secretToken: "SOME_RANDOM_SECRET"  # pick a strong one
+  secretToken: "SOME_RANDOM_SECRET"
+
 singleuser:
   image:
     name: jupyter/scipy-notebook
@@ -8,12 +9,18 @@ singleuser:
     type: dynamic
     dynamic:
       storageClass: microk8s-hostpath
+      size: 10Gi
+  # Mount external notebooks directory
+  extraVolumes:
+    - name: notebooks
+      hostPath:
+        path: /path/to/applications/notebooks
+  extraVolumeMounts:
+    - name: notebooks
+      mountPath: /home/jovyan/notebooks
 
 ingress:
   enabled: true
   hosts:
     - host: jupyter.brahma
       paths: ["/"]
-  tls:
-    - secretName: jupyterhub-tls
-      hosts: [jupyter.brahma]
