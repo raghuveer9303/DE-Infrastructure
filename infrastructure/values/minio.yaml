@@ -22,10 +22,10 @@ ingress:
     kubernetes.io/ingress.class: nginx
     cert-manager.io/cluster-issuer: letsencrypt-prod
   hosts:
-    - host: minio.data-platform.local
-      paths:
-        - path: "/"
-          pathType: "Prefix"
+    - minio.data-platform.local
+  path: "/"
+  pathType: "Prefix"
   tls:
     - secretName: minio-tls
-      hosts: [minio.brahma]
+      hosts:
+        - minio.data-platform.local

@@ -15,6 +15,6 @@ worker:
 
 ingress:
   enabled: true
-  hosts:
-    - host: spark.data-platform.local
-      paths: ["/"]
+  hostname: spark.data-platform.local
+  path: /
+  pathType: Prefix

@@ -27,8 +27,10 @@ ingress:
     kubernetes.io/ingress.class: nginx
     cert-manager.io/cluster-issuer: letsencrypt-prod
   hosts:
-    - host: postgres.brahma
-      paths: ["/"]
+    - name: postgres.brahma
+      path: /
+      pathType: Prefix
   tls:
     - secretName: postgres-tls
-      hosts: [postgres.brahma]
+      hosts:
+        - postgres.brahma
