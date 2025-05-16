@@ -10,17 +10,15 @@ singleuser:
     dynamic:
       storageClass: microk8s-hostpath
       size: 10Gi
-  # Mount external notebooks directory
-  extraVolumes:
-    - name: notebooks
-      hostPath:
-        path: /home/raghu/data-platform/applications/notebooks
-  extraVolumeMounts:
-    - name: notebooks
-      mountPath: /home/jovyan/notebooks
+    extraVolumes:
+      - name: notebooks
+        hostPath:
+          path: /home/raghu/data-platform/applications/notebooks
+    extraVolumeMounts:
+      - name: notebooks
+        mountPath: /home/jovyan/notebooks
 
 ingress:
   enabled: true
   hosts:
-    - host: jupyter.data-platform.local
-      paths: ["/"]
+    - jupyter.data-platform.local
