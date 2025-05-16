@@ -37,5 +37,5 @@ data:
 ingress:
   enabled: true
   hosts:
-    - host: airflow.brahma
+    - host: airflow.data-platform.local
       paths: ["/"]

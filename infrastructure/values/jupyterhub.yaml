@@ -22,5 +22,5 @@ singleuser:
 ingress:
   enabled: true
   hosts:
-    - host: jupyter.brahma
+    - host: jupyter.data-platform.local
       paths: ["/"]

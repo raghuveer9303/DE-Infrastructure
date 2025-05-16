@@ -46,5 +46,5 @@ init:
 ingress:
   enabled: true
   hosts:
-    - host: superset.brahma
+    - host: superset.data-platform.local
       paths: ["/"]
