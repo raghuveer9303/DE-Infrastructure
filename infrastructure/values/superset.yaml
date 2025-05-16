@@ -1,6 +1,6 @@
 configOverrides:
   SUPERSET_WEBSERVER_PORT: "8088"
-  SECRET_KEY: "your-secret-key"
+  SECRET_KEY: "fDKLH9TPdK543s89JKLp0aSdGHhaFGq9KLJ665DFnmDf87sJhgAwtRuL"
   SQLALCHEMY_DATABASE_URI: "postgresql+psycopg2://db_user:db_pass@postgres-postgresql.data.svc.cluster.local:5432/analytics"
 
 persistence:
