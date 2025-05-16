@@ -45,6 +45,7 @@ init:
 
 ingress:
   enabled: true
+  path: /
+  pathType: ImplementationSpecific
   hosts:
-    - host: superset.data-platform.local
-      paths: ["/"]
+    - superset.data-platform.local
