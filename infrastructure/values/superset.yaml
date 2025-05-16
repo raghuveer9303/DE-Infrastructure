@@ -1,0 +1,11 @@
+configOverrides:
+  SUPERSET_WEBSERVER_PORT: "8088"
+
+ingress:
+  enabled: true
+  hosts:
+    - host: superset.brahma
+      paths: ["/"]
+  tls:
+    - secretName: superset-tls
+      hosts: [superset.brahma]

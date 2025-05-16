@@ -1,0 +1,17 @@
+auth:
+  username: db_user
+  password: db_pass
+  database: analytics
+
+primary:
+  persistence:
+    storageClass: microk8s-hostpath
+
+ingress:
+  enabled: true
+  hosts:
+    - host: postgres.brahma
+      paths: ["/"]
+  tls:
+    - secretName: postgres-tls
+      hosts: [postgres.brahma]

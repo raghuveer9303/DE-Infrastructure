@@ -1,0 +1,22 @@
+executor: CeleryExecutor
+dags:
+  persistence:
+    enabled: true
+    storageClassName: microk8s-hostpath
+logs:
+  persistence:
+    enabled: true
+    storageClassName: microk8s-hostpath
+
+webserver:
+  service:
+    type: ClusterIP
+
+ingress:
+  enabled: true
+  hosts:
+    - host: airflow.brahma
+      paths: ["/"]
+  tls:
+    - secretName: airflow-tls
+      hosts: [airflow.brahma]

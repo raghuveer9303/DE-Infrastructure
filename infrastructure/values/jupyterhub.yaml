@@ -1,0 +1,19 @@
+proxy:
+  secretToken: "SOME_RANDOM_SECRET"  # pick a strong one
+singleuser:
+  image:
+    name: jupyter/scipy-notebook
+    tag: latest
+  storage:
+    type: dynamic
+    dynamic:
+      storageClass: microk8s-hostpath
+
+ingress:
+  enabled: true
+  hosts:
+    - host: jupyter.brahma
+      paths: ["/"]
+  tls:
+    - secretName: jupyterhub-tls
+      hosts: [jupyter.brahma]

@@ -1,0 +1,12 @@
+image:
+  repository: ghcr.io/yourorg/project-a-dbt
+  tag: latest
+
+command:
+  - tail
+args:
+  - -f
+  - /dev/null  # keep pod alive for K8sPodOperator
+
+serviceAccount:
+  create: true

@@ -1,0 +1,16 @@
+master:
+  webPort: 8080
+worker:
+  webPort: 8081
+
+persistence:
+  storageClass: microk8s-hostpath
+
+ingress:
+  enabled: true
+  hosts:
+    - host: spark.brahma
+      paths: ["/"]
+  tls:
+    - secretName: spark-tls
+      hosts: [spark.brahma]

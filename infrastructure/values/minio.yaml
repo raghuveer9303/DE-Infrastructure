@@ -1,0 +1,16 @@
+accessKey: minioadmin
+secretKey: minioadmin
+mode: standalone
+persistence:
+  storageClass: microk8s-hostpath
+
+ingress:
+  enabled: true
+  hosts:
+    - host: minio.brahma
+      paths:
+        - path: "/"
+          pathType: "Prefix"
+  tls:
+    - secretName: minio-tls
+      hosts: [minio.brahma]
