@@ -15,6 +15,7 @@ worker:
 
 ingress:
   enabled: true
+  ingressClassName: nginx
   hostname: spark.data-platform.local
   path: /
   pathType: Prefix

@@ -20,5 +20,6 @@ singleuser:
 
 ingress:
   enabled: true
+  ingressClassName: nginx
   hosts:
     - jupyter.data-platform.local
