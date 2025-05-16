@@ -13,7 +13,7 @@ volumeMounts:
 volumes:
   - name: dbt-profiles
     hostPath:
-      path: /path/to/applications/dbt/profiles
+      path: /home/raghu/data-platform/applications/dbt/profiles
   - name: dbt-project
     hostPath:
-      path: /path/to/applications/dbt/project
+      path: /home/raghu/data-platform/applications/dbt/project

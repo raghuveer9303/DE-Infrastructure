@@ -10,7 +10,7 @@ dags:
   # Mount external DAGs
   hostPath:
     enabled: true
-    path: /path/to/applications/airflow-dags
+    path: /home/raghu/data-platform/applications/airflow-dags
 
 logs:
   persistence:

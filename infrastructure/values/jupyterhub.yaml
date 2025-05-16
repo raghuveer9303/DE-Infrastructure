@@ -14,7 +14,7 @@ singleuser:
   extraVolumes:
     - name: notebooks
       hostPath:
-        path: /path/to/applications/notebooks
+        path: /home/raghu/data-platform/applications/notebooks
   extraVolumeMounts:
     - name: notebooks
       mountPath: /home/jovyan/notebooks
