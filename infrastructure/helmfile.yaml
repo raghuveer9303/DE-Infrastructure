@@ -7,8 +7,6 @@ repositories:
     url: https://airflow.apache.org
   - name: bitnami
     url: https://charts.bitnami.com/bitnami
-  - name: superset
-    url: https://apache.github.io/superset
 
 releases:
   - name: minio
@@ -45,17 +43,3 @@ releases:
     chart: bitnami/postgresql
     values:
       - values/postgres.yaml
-
-  - name: superset
-    namespace: superset
-    createNamespace: true
-    chart: superset/superset
-    values:
-      - values/superset.yaml
-
-  - name: dbt-runner
-    namespace: dbt
-    createNamespace: true
-    chart: k8s-as-helm/pod
-    values:
-      - values/dbt-runner.yaml
