@@ -7,9 +7,9 @@ singleuser:
     tag: latest
   storage:
     type: dynamic
+    capacity: 10Gi
     dynamic:
       storageClass: microk8s-hostpath
-      size: 10Gi
     extraVolumes:
       - name: notebooks
         hostPath:
